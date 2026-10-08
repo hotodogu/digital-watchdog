@@ -1,29 +1,34 @@
 # Digital Watchdog
 
-A project built with Next.js App Router, React, TypeScript and Tailwind CSS. Production address: [https://digitalwatchdog.ayonyuan.com](https://digitalwatchdog.ayonyuan.com)
+An educational project about common scams, phishing and online safety, built with Next.js App Router, React, TypeScript and Tailwind CSS. It is not a real organisation and is not affiliated with the services it references.
 
-## Local development
+## Requirements
 
-Use Node.js 24 (see `.nvmrc`). With nvm installed, run `nvm use`.
+- Node.js 24 (see `.nvmrc`)
+- npm
+
+If you use nvm, run `nvm use` before installing dependencies.
+
+## Run locally
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Edit `src/app/page.tsx` to update the homepage.
+Open http://localhost:3000. The development server refreshes when source files change.
 
 ## Project structure
 
-- `src/app/`: pages, shared layout, metadata, global styles and 404 page.
-- `src/components/`: reusable React components.
-- `src/content/`: research content and structured data.
-- `public/images/`: images and SVGs, referenced as `/images/filename.svg`.
+- `src/app/`: pages, shared layout, metadata, styles and 404 page.
+- `src/components/`: shared navigation, footer and UI components.
+- `src/content/`: educational content and resource links.
+- `public/`: static files, including images and icon licence notices.
 - `.github/workflows/deploy.yml`: validation and GitHub Pages deployment.
 
-The site includes a responsive navy and teal layout, four educational scam guides, an online safety checklist, external support pathways, a resource directory and an About page. A project-only notice and disclaimer appear throughout. The pamphlet download is pending the finished file.
+The website includes scam guides, an online safety checklist, support links, a resource directory and an About page. The pamphlet download will be added when the finished PDF is available.
 
-Graphics use open-source Lucide SVG icons and CSS illustrations. Licence notices are included in `public/icon-licenses.txt`. Content and source links are maintained in `src/content/site.ts`; external sources should be rechecked before future updates.
+Graphics use open-source Lucide icons and CSS illustrations. Licence notices are in `public/icon-licenses.txt`. Recheck external sources when updating content.
 
 ## Validate and build
 
@@ -31,41 +36,67 @@ Graphics use open-source Lucide SVG icons and CSS illustrations. Licence notices
 npm run check
 ```
 
-This runs ESLint, TypeScript and the production build. The static website is exported to `out/`.
-To preview that output, run `python3 -m http.server 3000 --directory out` and open [http://localhost:3000](http://localhost:3000).
-Do not use `next start` for this static export.
+This runs linting, generates Next.js route types, checks TypeScript and builds the production site. Individual commands are also available:
 
-## First deployment
+```sh
+npm run lint
+npm run typecheck
+npm run build
+```
 
-1. Commit and push this skeleton to `main` in `hotodogu/digital-watchdog`.
-2. In the repository's **Settings → Pages**, select **GitHub Actions** as the deployment source.
-3. Set the custom domain to `digitalwatchdog.ayonyuan.com` in Pages settings.
-4. At the DNS provider for `ayonyuan.com`, add a **CNAME** record named `digitalwatchdog` pointing to `hotodogu.github.io` (no protocol or repository path). Replace a conflicting record at that exact subdomain if necessary; leave the apex domain and other subdomains alone.
-5. Run the **Deploy to GitHub Pages** workflow from the Actions tab if the initial run needs retrying after Pages is enabled.
-6. After GitHub verifies DNS and provisions the certificate, enable **Enforce HTTPS**.
-7. Check the homepage, a direct page URL and an unknown URL on the live domain.
+The build exports the static website to `out/`. To preview it:
 
-Domain verification in your GitHub account is recommended before connecting DNS. GitHub's instructions:
-[https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
+```sh
+python3 -m http.server 3000 --directory out
+```
 
-A custom Actions deployment uses the domain in Pages settings; it does not require a repository CNAME file.
-The site assumes it is served at the root of the custom subdomain, so no repository `basePath` is configured.
-The default `hotodogu.github.io/digital-watchdog/` URL is not the intended standalone deployment target.
+Open http://localhost:3000. Use a static file server for the exported site; `next start` does not support this export configuration.
 
-Every push to `main` validates and publishes the website. Pull requests validate without publishing.
-The first deployment requires the repository to be eligible for GitHub Pages under your GitHub plan.
+## Deploy to a static host
+
+1. Set `metadataBase` in `src/app/layout.tsx` to your production origin.
+2. Configure `basePath` in `next.config.ts` if the site will be served under a path such as `/repository-name` rather than at a domain’s root. Update any absolute public-asset paths accordingly.
+3. Run `npm ci` and `npm run check`.
+4. Publish the contents of `out/` using your hosting provider’s static-site deployment process.
+5. If using a custom domain, configure the domain and DNS using your host’s instructions, then enable HTTPS.
+6. Verify page navigation, direct page visits, assets and the 404 page on the deployed site.
+
+The current configuration serves the website at a domain’s root. Deployment-specific domain values elsewhere in the repository must be reviewed when reusing the project.
+
+## Deploy with GitHub Pages
+
+The included workflow builds the website and uploads `out/` as a Pages artifact.
+
+1. Push the project to a GitHub repository on `main`.
+2. In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source.
+3. Choose your address:
+   - For a project URL such as `https://<username>.github.io/<repository>/`, configure `basePath` as `/<repository>` before building.
+   - For a user/organisation site or custom domain served at the root, leave `basePath` unset. For a custom domain, save it in Pages settings before configuring DNS at your provider.
+4. In **Actions**, run **Deploy to GitHub Pages** on `main`, or push a new commit to trigger it.
+5. Wait for the build and deployment jobs to succeed. Enable **Enforce HTTPS** when available.
+
+A custom Actions deployment uses the domain configured in Pages settings; a repository `CNAME` file is not required. Review any existing `CNAME` when reusing this repository.
+
+Pushes to `main` validate and deploy automatically. Pull requests validate without publishing. GitHub Pages availability depends on repository visibility and your GitHub plan.
+
+## Generated TypeScript files
+
+`next-env.d.ts` is generated by Next.js. Do not edit its paths manually: development can reference `.next/dev/types/`, while production builds and `next typegen` generate production type references under `.next/types/`.
+
+These are TypeScript declarations, not browser code or a production dependency on the development server. `npm run typecheck` generates the required types first so it also works in a fresh checkout. The `.next/` directory is ignored by Git.
 
 ## Static hosting constraints
 
-Next.js uses `output: "export"` and trailing slashes for directory-based URLs.
-React interactions, SVGs, charts and Canvas can run in the browser. Any dynamic routes must have their paths generated at build time.
-GitHub Pages does not run a backend: request-time rendering, Server Actions, private API secrets and runtime API endpoints require a separate service.
-Images use unoptimised delivery because the Next.js image optimisation server is unavailable; compress and resize assets before adding them.
-Never commit credentials or put secrets in browser code. Environment files are ignored by Git.
+- The site uses `output: "export"` and trailing slashes.
+- React interactions, SVG and Canvas run in the visitor’s browser.
+- Dynamic route paths must be generated at build time.
+- Server Actions, request-time rendering and runtime API endpoints require a separate backend.
+- Images are delivered without the Next.js image optimisation server. Resize and compress assets before adding them.
+- Keep credentials out of source files and browser code. Local environment files are ignored by Git.
 
-## Deployment references
+## References
 
-- [https://nextjs.org/docs/app/guides/static-exports](https://nextjs.org/docs/app/guides/static-exports)
-- [https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
-- [https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
-
+- [Next.js static exports](https://nextjs.org/docs/app/guides/static-exports)
+- [Next.js TypeScript configuration](https://nextjs.org/docs/app/api-reference/config/typescript)
+- [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+- [GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
