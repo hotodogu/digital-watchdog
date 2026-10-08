@@ -21,7 +21,9 @@ Open [http://localhost:3000](http://localhost:3000). Edit `src/app/page.tsx` to 
 - `public/images/`: images and SVGs, referenced as `/images/filename.svg`.
 - `.github/workflows/deploy.yml`: validation and GitHub Pages deployment.
 
-No design system or project content has been selected yet. The initial page is a placeholder.
+The site includes a responsive navy and teal layout, four educational scam guides, an online safety checklist, external support pathways, a resource directory and an About page. A project-only notice and disclaimer appear throughout. The pamphlet download is pending the finished file.
+
+Graphics use open-source Lucide SVG icons and CSS illustrations. Licence notices are included in `public/icon-licenses.txt`. Content and source links are maintained in `src/content/site.ts`; external sources should be rechecked before future updates.
 
 ## Validate and build
 
