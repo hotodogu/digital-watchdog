@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitalwatchdog.ayonyuan.com"),
   title: { default: "Digital Watchdog", template: "%s | Digital Watchdog" },
-  description: "Digital Watchdog — an EST project. Website coming soon.",
+  description: "Digital Watchdog. Website coming soon.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
