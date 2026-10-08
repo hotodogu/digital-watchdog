@@ -96,9 +96,17 @@ export default function About() {
           <div className="aside-note">
             <h3>Project pamphlet</h3>
             <p>
-              The pamphlet is being developed. A downloadable copy will be added
-              once it is ready.
+              Read the group’s pamphlet for a concise overview of online safety.
             </p>
+            <a
+              className="text-link"
+              href="/documents/digital-watchdog-online-safety-pamphlet.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the pamphlet (PDF, 782 KB) ↗
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
         </aside>
       </div>

@@ -26,7 +26,7 @@ Open http://localhost:3000. The development server refreshes when source files c
 - `public/`: static files, including images and icon licence notices.
 - `.github/workflows/deploy.yml`: validation and GitHub Pages deployment.
 
-The website includes scam guides, an online safety checklist, support links, a resource directory and an About page. The pamphlet download will be added when the finished PDF is available.
+The website includes scam guides, an online safety checklist, support links, a resource directory and an About page. The online safety pamphlet is available from the homepage and About page, opening in a new tab. Replace `public/documents/digital-watchdog-online-safety-pamphlet.pdf` to update it and adjust the displayed file size if needed.
 
 Graphics use open-source Lucide icons and CSS illustrations. Licence notices are in `public/icon-licenses.txt`. Recheck external sources when updating content.
 

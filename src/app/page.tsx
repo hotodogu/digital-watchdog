@@ -186,10 +186,17 @@ export default function Home() {
           <Icon name="book" size={32} />
           <h3>From pamphlet to practical knowledge.</h3>
           <p>
-            This website expands on our group’s scam-awareness pamphlet. The
-            downloadable pamphlet will be added when it is ready.
+            Read our group’s online safety pamphlet for a handy overview of
+            scam awareness and safer online habits.
           </p>
-          <Link href="/about/">Learn about the project →</Link>
+          <a
+            href="/documents/digital-watchdog-online-safety-pamphlet.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open the pamphlet (PDF, 782 KB) ↗
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
         </div>
       </section>
     </main>
