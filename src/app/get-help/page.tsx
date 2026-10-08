@@ -32,22 +32,22 @@ export default function Help() {
             n: "01",
             title: "Shared a password or sign-in code?",
             text: "From a device you trust, use the service’s official recovery process and change affected passwords. Change reused passwords elsewhere, review active sessions and turn on MFA.",
-            url: "https://www.cyber.gov.au/submit-a-report",
+            url: "https://www.cyber.gov.au/recover-from-account-compromise",
             label: "Find account recovery guidance",
           },
           {
             n: "02",
             title: "Shared identity or personal information?",
-            text: "Contact IDCARE for guidance on identity misuse and a response plan. Contact the relevant document issuer if identity documents are involved.",
-            url: "https://www.idcare.org/",
-            label: "Get support from IDCARE",
+            text: "Contact the relevant document issuer if identity documents are involved. Services Australia explains the steps to take if your myGov, Centrelink or Medicare information has been exposed or misused.",
+            url: "https://www.servicesaustralia.gov.au/scams-and-identity-theft",
+            label: "Read Services Australia’s identity theft guidance",
           },
           {
             n: "03",
             title: "Installed software or granted remote access?",
             text: "Stop interacting with the caller. Use another trusted device to contact your bank if needed, and seek qualified technical help to secure the affected device.",
-            url: "https://www.cyber.gov.au/submit-a-report",
-            label: "Find cyber recovery information",
+            url: "https://www.scamwatch.gov.au/stop-check-protect/what-to-do-if-youve-been-scammed",
+            label: "Read Scamwatch’s recovery steps",
           },
           {
             n: "04",
@@ -72,8 +72,8 @@ export default function Help() {
           difficult to manage debts or living costs, free financial counselling
           information is available.
         </p>
-        <External href="https://ndh.org.au/">
-          Visit the National Debt Helpline
+        <External href="https://moneysmart.gov.au/managing-debt/financial-counselling">
+          Find financial counselling through ASIC’s Moneysmart
         </External>
         <p className="muted">
           Be cautious of anyone promising to recover lost money for an upfront
@@ -81,14 +81,14 @@ export default function Help() {
         </p>
       </aside>
       <div className="source-note">
-        <External href="https://www.scamwatch.gov.au/types-of-scams/phishing-scams">
+        <External href="https://www.scamwatch.gov.au/stop-check-protect/what-to-do-if-youve-been-scammed">
           Read Scamwatch’s response guidance
         </External>
         <External href="https://www.cyber.gov.au/submit-a-report">
-          Report cybercrime and find recovery guidance
+          Report cybercrime through Cyber.gov.au
         </External>
         <p>
-          Sources checked 8 October 2026. Digital Watchdog does not accept scam
+          Sources checked 9 October 2026. Digital Watchdog does not accept scam
           reports or provide case support. If someone is in immediate danger in
           Australia, call 000.
         </p>
