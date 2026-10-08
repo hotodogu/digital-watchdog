@@ -32,7 +32,7 @@ export default function Help() {
             n: "01",
             title: "Shared a password or sign-in code?",
             text: "From a device you trust, use the service’s official recovery process and change affected passwords. Change reused passwords elsewhere, review active sessions and turn on MFA.",
-            url: "https://www.cyber.gov.au/report-and-recover",
+            url: "https://www.cyber.gov.au/submit-a-report",
             label: "Find account recovery guidance",
           },
           {
@@ -46,7 +46,7 @@ export default function Help() {
             n: "03",
             title: "Installed software or granted remote access?",
             text: "Stop interacting with the caller. Use another trusted device to contact your bank if needed, and seek qualified technical help to secure the affected device.",
-            url: "https://www.cyber.gov.au/report-and-recover",
+            url: "https://www.cyber.gov.au/submit-a-report",
             label: "Find cyber recovery information",
           },
           {
@@ -84,7 +84,7 @@ export default function Help() {
         <External href="https://www.scamwatch.gov.au/types-of-scams/phishing-scams">
           Read Scamwatch’s response guidance
         </External>
-        <External href="https://www.cyber.gov.au/report-and-recover">
+        <External href="https://www.cyber.gov.au/submit-a-report">
           Report cybercrime and find recovery guidance
         </External>
         <p>
